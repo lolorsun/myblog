@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+#101.200.86.207:25671
+logging:
+  level:
+  #按包的名字设置打印日志的级别
+    root: warn
+    com.lolorsun: info
+  file: log/blog-pro.log
+server:
+  port: 8081
+

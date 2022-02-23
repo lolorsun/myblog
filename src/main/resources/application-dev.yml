@@ -1,0 +1,37 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://101.200.86.207:25671/myblog?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+#      username: root
+#      password: root
+#  jpa:
+#    hibernate:
+#    #配置为update时，类更改，自动更新表结构。实体类不更新时设置为none，避免实体类发生变动
+#      ddl-auto: update
+#    show-sql: true
+#logging:
+#  level:
+#  #按包的名字设置打印日志的级别
+#    root: info
+#    com.lolorsun: debug
+#  file: log/blog-dev.log
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: info
+    com.lolorsun: debug
+  file:
+    name: log/blog-dev.log
+
