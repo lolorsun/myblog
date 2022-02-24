@@ -9,9 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -45,6 +43,27 @@ public class TypeController {
             redirectAttributes.addFlashAttribute("message","操作成功");
         }
         return "redirect:/admin/types";
+    }
+    //修改类型的映射方法
+    @PostMapping("/types/{id}")
+    public String modiTypePost(Type type,@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        Type t = typeService.saveType(type);
+        if (t == null) {
+            redirectAttributes.addFlashAttribute("mesage","操作失败");
+        } else {
+            redirectAttributes.addFlashAttribute("message","操作成功");
+        }
+        return "redirect:/admin/types";
+    }
+    @GetMapping("/types/{id}/del")
+    public String delType(@PathVariable Long id,RedirectAttributes redirectAttributes){
+        typeService.delType(id);
+        return "redirect:/admin/types";
+    }
+    @GetMapping("/types/{id}/modi")
+    public String modiType(@PathVariable Long id,Model model){
+        model.addAttribute("type",typeService.getOneType(id));
+        return "admin/types-input";
     }
 
 
